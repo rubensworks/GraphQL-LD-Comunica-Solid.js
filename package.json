@@ -1,7 +1,7 @@
 {
   "name": "graphql-ld-comunica",
   "version": "0.0.1",
-  "description": "Linked Data Querying with GraphQL",
+  "description": "A GraphQL-LD engine that is backed by Comunica",
   "keywords": [
     "graphql",
     "graphqlld",
