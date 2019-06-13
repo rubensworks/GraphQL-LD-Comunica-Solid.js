@@ -37,6 +37,7 @@
     "@types/graphql": "^14.0.0",
     "@types/jest": "^24.0.0",
     "@types/minimist": "^1.2.0",
+    "@types/n3": "^1.1.0",
     "coveralls": "^3.0.0",
     "jest": "^23.4.1",
     "manual-git-changelog": "^1.0.1",
@@ -78,8 +79,8 @@
     "version": "manual-git-changelog onversion"
   },
   "dependencies": {
-    "@comunica/actor-init-sparql": "^1.7.3",
-    "graphql-ld": "^0.0.1",
+    "@comunica/actor-init-sparql": "^1.8.0",
+    "graphql-ld": "^1.0.0",
     "sparqlalgebrajs": "^1.5.2"
   }
 }
