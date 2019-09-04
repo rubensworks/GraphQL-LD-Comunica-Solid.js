@@ -1,1 +1,1 @@
-export * from './lib/QueryEngineComunica';
+export * from './lib/QueryEngineComunicaSolid';

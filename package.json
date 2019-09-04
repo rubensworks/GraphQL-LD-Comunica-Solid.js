@@ -1,11 +1,12 @@
 {
   "name": "graphql-ld-comunica",
   "version": "1.0.0",
-  "description": "A GraphQL-LD engine that is backed by Comunica",
+  "description": "A GraphQL-LD engine that is backed by Comunica with Solid authentication",
   "keywords": [
     "graphql",
     "graphqlld",
     "sparql",
+    "solid",
     "query",
     "rdf",
     "linked data",
@@ -13,6 +14,14 @@
   ],
   "main": "index.js",
   "typings": "index",
+  "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica",
+  "lsd:contexts": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica/^2.0.0/components/context.jsonld": "components/context.jsonld"
+  },
+  "lsd:importPaths": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica/^2.0.0/components/": "components/",
+    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica/^2.0.0/config/": "config/"
+  },
   "repository": "git@github.com:rubensworks/graphql-ld-comunica.js.git",
   "author": "Ruben Taelman <rubensworks@gmail.com>",
   "bugs": {
@@ -75,11 +84,12 @@
     "lint": "tslint index.ts lib/**/*.ts test/**/*.ts --exclude '**/*.d.ts'",
     "build": "tsc",
     "validate": "npm ls",
-    "prepare": "npm run build",
+    "prepare": "npm run build && mkdirp lib && comunica-compile-config config/config-default.json > lib/comunica-engine.js",
     "version": "manual-git-changelog onversion"
   },
   "dependencies": {
-    "@comunica/actor-init-sparql": "^1.8.0",
+    "@comunica/actor-init-sparql": "^1.9.0",
+    "@comunica/actor-http-solid-auth-fetch": "^1.0.0",
     "graphql-ld": "^1.0.0",
     "sparqlalgebrajs": "^1.5.2"
   }

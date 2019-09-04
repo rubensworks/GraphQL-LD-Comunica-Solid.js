@@ -1,40 +1,56 @@
-# Comunica for GraphQL-LD
+# Comunica with Solid authentication for GraphQL-LD
 
 [![Build Status](https://travis-ci.org/rubensworks/graphql-ld-comunica.js.svg?branch=master)](https://travis-ci.org/rubensworks/graphql-ld-comunica.js)
 [![Coverage Status](https://coveralls.io/repos/github/rubensworks/graphql-ld-comunica.js/badge.svg?branch=master)](https://coveralls.io/github/rubensworks/graphql-ld-comunica.js?branch=master)
 [![npm version](https://badge.fury.io/js/graphql-ld-comunica.svg)](https://www.npmjs.com/package/graphql-ld-comunica) [![Greenkeeper badge](https://badges.greenkeeper.io/rubensworks/graphql-ld-comunica.js.svg)](https://greenkeeper.io/)
 
-This is a [GraphQL-LD](https://github.com/rubensworks/graphql-ld.js) engine for executing queries using the [Comunica](https://github.com/comunica/comunica) query engine.
+This is a [GraphQL-LD](https://github.com/rubensworks/graphql-ld.js) engine for executing queries
+using the [Comunica](https://github.com/comunica/comunica) query engine
+with [Solid](https://solid.mit.edu/) authentication.
+
+This tool is identical to [graphql-ld-comunica](https://github.com/rubensworks/GraphQL-LD-Comunica-Solid.js),
+with the additional feature that HTTP requests are authenticated using [solid-auth-client](https://github.com/solid/solid-auth-client/).
 
 ## Usage
 
-_This requires you to install [graphql-ld-sparqlendpoint](https://github.com/rubensworks/graphql-ld-comunica.js): `yarn add graphql-ld-comunica`._
+_This requires you to install [graphql-ld-comunica-solid](https://github.com/rubensworks/graphql-ld-comunica-solid.js): `yarn add graphql-ld-comunica-solid`._
 
 ```javascript
 import {Client} from "graphql-ld";
-import {QueryEngineComunica} from "graphql-ld-comunica";
+import {QueryEngineComunicaSolid} from "graphql-ld-comunica-solid";
 
 // Define a JSON-LD context
 const context = {
   "@context": {
-    "label": { "@id": "http://www.w3.org/2000/01/rdf-schema#label" }
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "label": "rdfs:label",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "name": "foaf:name",
+    "img": "foaf:img",
+    "interests": "foaf:topic_interest",
+    "RUBEN": { "@id": "https://www.rubensworks.net/#me" }
   }
 };
 
 // Create a GraphQL-LD client based on a client-side Comunica engine over 3 sources
 const comunicaConfig = {
   sources: [
-    { type: "sparql", value: "'http://dbpedia.org/sparql'" },
-    { type: "file", value: "https://ruben.verborgh.org/profile/" },
-    { type: "hypermedia", value: "https://fragments.linkedsoftwaredependencies.org/npm" },
+    "https://www.rubensworks.net/",
+    "http://fragments.dbpedia.org/2016-04/en",
   ],
 };
-const client = new Client({ context, queryEngine: new QueryEngineComunica(comunicaConfig) });
+const client = new Client({ context, queryEngine: new QueryEngineComunicaSolid(comunicaConfig) });
 
 // Define a query
 const query = `
   query @single {
-    label
+    id(_:RUBEN)
+    name @single
+    img @single
+    interests {
+      id @single
+      label @single
+    }
   }`;
 
 // Execute the query

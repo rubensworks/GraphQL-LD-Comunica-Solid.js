@@ -2,25 +2,23 @@ const comunicaEngine = {
   query: jest.fn((query, context) => Promise.resolve(`{ "a": "b" }`)),
   resultToString: jest.fn((data) => Promise.resolve({ data: streamifyString(data) })),
 };
-jest.mock('@comunica/actor-init-sparql', () => ({
-  newEngine: () => comunicaEngine,
-}));
+jest.mock('../lib/comunica-engine', () => comunicaEngine);
 
 import {IQueryEngine} from "graphql-ld";
 import {Algebra} from "sparqlalgebrajs";
 import translate from "sparqlalgebrajs/lib/sparqlAlgebra";
-import {QueryEngineComunica} from "../lib/QueryEngineComunica";
+import {QueryEngineComunicaSolid} from "../lib/QueryEngineComunicaSolid";
 
 const streamifyString = require('streamify-string');
 
 // tslint:disable:object-literal-key-quotes
 
-describe('QueryEngineComunica', () => {
+describe('QueryEngineComunicaSolid', () => {
   let queryEngine: IQueryEngine;
   let sparqlAlgebra: Algebra.Operation;
 
   beforeEach(async () => {
-    queryEngine = new QueryEngineComunica({ sources: { type: 'rdfjsSource', value: null } });
+    queryEngine = new QueryEngineComunicaSolid({ sources: { type: 'rdfjsSource', value: null } });
     sparqlAlgebra = translate('SELECT * WHERE { ?x ?y ?z }');
   });
 
