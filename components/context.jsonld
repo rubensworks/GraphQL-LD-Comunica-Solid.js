@@ -3,7 +3,7 @@
     "https://linkedsoftwaredependencies.org/bundles/npm/componentsjs/^3.0.0/components/context.jsonld",
     {
       "npmd": "https://linkedsoftwaredependencies.org/bundles/npm/",
-      "glc": "npmd:graphql-ld-comunica/",
+      "glc": "npmd:graphql-ld-comunica-solid/",
       "files-glc": "glc:^2.0.0/",
       "config-sets-glc": "files-glc:config/sets/"
     }

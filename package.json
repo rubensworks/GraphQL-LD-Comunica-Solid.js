@@ -1,5 +1,5 @@
 {
-  "name": "graphql-ld-comunica",
+  "name": "graphql-ld-comunica-solid",
   "version": "1.0.0",
   "description": "A GraphQL-LD engine that is backed by Comunica with Solid authentication",
   "keywords": [
@@ -14,20 +14,20 @@
   ],
   "main": "index.js",
   "typings": "index",
-  "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica",
+  "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid",
   "lsd:contexts": {
-    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica/^2.0.0/components/context.jsonld": "components/context.jsonld"
+    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid/^2.0.0/components/context.jsonld": "components/context.jsonld"
   },
   "lsd:importPaths": {
-    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica/^2.0.0/components/": "components/",
-    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica/^2.0.0/config/": "config/"
+    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid/^2.0.0/components/": "components/",
+    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid/^2.0.0/config/": "config/"
   },
-  "repository": "git@github.com:rubensworks/graphql-ld-comunica.js.git",
+  "repository": "git@github.com:rubensworks/graphql-ld-comunica-solid.js.git",
   "author": "Ruben Taelman <rubensworks@gmail.com>",
   "bugs": {
-    "url": "https://github.com/rubensworks/graphql-ld-comunica.js/issues"
+    "url": "https://github.com/rubensworks/graphql-ld-comunica-solid.js/issues"
   },
-  "homepage": "https://github.com/rubensworks/graphql-ld-comunica.js#readme",
+  "homepage": "https://github.com/rubensworks/graphql-ld-comunica-solid.js#readme",
   "license": "MIT",
   "files": [
     "lib/**/*.d.ts",
