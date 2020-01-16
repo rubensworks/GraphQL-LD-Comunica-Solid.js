@@ -48,11 +48,11 @@
     "@types/minimist": "^1.2.0",
     "@types/n3": "^1.1.0",
     "coveralls": "^3.0.0",
-    "jest": "^23.4.1",
+    "jest": "^24.9.0",
     "manual-git-changelog": "^1.0.1",
     "pre-commit": "^1.2.2",
     "streamify-string": "^1.0.1",
-    "ts-jest": "^23.10.3",
+    "ts-jest": "^24.3.0",
     "tslint": "^5.8.0",
     "tslint-eslint-rules": "^5.3.1",
     "typescript": "^3.3.1"
@@ -91,6 +91,6 @@
     "@comunica/actor-init-sparql": "^1.9.0",
     "@comunica/actor-http-solid-auth-fetch": "^1.0.0",
     "graphql-ld": "^1.0.0",
-    "sparqlalgebrajs": "^1.5.2"
+    "sparqlalgebrajs": "^2.2.0"
   }
 }
