@@ -46,7 +46,7 @@
     "@types/graphql": "^14.0.0",
     "@types/jest": "^24.0.0",
     "@types/minimist": "^1.2.0",
-    "@types/n3": "^1.1.0",
+    "@types/n3": "^1.1.4",
     "coveralls": "^3.0.0",
     "jest": "^24.9.0",
     "manual-git-changelog": "^1.0.1",
@@ -88,7 +88,7 @@
     "version": "manual-git-changelog onversion"
   },
   "dependencies": {
-    "@comunica/actor-init-sparql": "^1.9.0",
+    "@comunica/actor-init-sparql": "^1.10.0",
     "@comunica/actor-http-solid-auth-fetch": "^1.0.0",
     "graphql-ld": "^1.0.0",
     "sparqlalgebrajs": "^2.2.0"
