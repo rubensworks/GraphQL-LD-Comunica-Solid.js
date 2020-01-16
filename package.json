@@ -1,6 +1,6 @@
 {
   "name": "graphql-ld-comunica-solid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A GraphQL-LD engine that is backed by Comunica with Solid authentication",
   "keywords": [
     "graphql",
