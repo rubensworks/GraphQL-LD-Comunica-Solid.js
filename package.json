@@ -48,7 +48,7 @@
     "@types/minimist": "^1.2.0",
     "@types/n3": "^1.1.4",
     "coveralls": "^3.0.0",
-    "jest": "^25.0.0",
+    "jest": "^26.0.0",
     "manual-git-changelog": "^1.0.1",
     "pre-commit": "^1.2.2",
     "streamify-string": "^1.0.1",
