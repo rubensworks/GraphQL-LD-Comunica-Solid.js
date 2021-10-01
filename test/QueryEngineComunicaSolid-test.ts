@@ -2,7 +2,7 @@ const comunicaEngine = {
   query: jest.fn((query, context) => Promise.resolve(`{ "a": "b" }`)),
   resultToString: jest.fn((data) => Promise.resolve({ data: streamifyString(data) })),
 };
-jest.mock('../lib/comunica-engine', () => comunicaEngine);
+jest.mock('@comunica/actor-init-sparql-solid', () => ({ newEngine: () => comunicaEngine }));
 
 import {IQueryEngine} from "graphql-ld";
 import {Algebra} from "sparqlalgebrajs";
@@ -17,18 +17,44 @@ describe('QueryEngineComunicaSolid', () => {
   let queryEngine: IQueryEngine;
   let sparqlAlgebra: Algebra.Operation;
 
-  beforeEach(async () => {
-    queryEngine = new QueryEngineComunicaSolid({ sources: { type: 'rdfjsSource', value: null } });
-    sparqlAlgebra = translate('SELECT * WHERE { ?x ?y ?z }');
+  describe('without a session', () => {
+    beforeEach(async () => {
+      queryEngine = new QueryEngineComunicaSolid({ sources: { type: 'rdfjsSource', value: null } });
+      sparqlAlgebra = translate('SELECT * WHERE { ?x ?y ?z }');
+    });
+
+    describe('query', () => {
+      it('should return a JSON object', async () => {
+        expect(await queryEngine.query(sparqlAlgebra)).toEqual({ a: 'b' });
+        expect(comunicaEngine.query)
+          .toHaveBeenCalledWith(sparqlAlgebra, { sources: { type: 'rdfjsSource', value: null } });
+        expect(comunicaEngine.resultToString)
+          .toHaveBeenCalledWith(`{ "a": "b" }`, 'application/sparql-results+json');
+      });
+    });
   });
 
-  describe('query', () => {
-    it('should return a JSON object', async () => {
-      expect(await queryEngine.query(sparqlAlgebra)).toEqual({ a: 'b' });
-      expect(comunicaEngine.query)
-        .toHaveBeenCalledWith(sparqlAlgebra, { sources: { type: 'rdfjsSource', value: null } });
-      expect(comunicaEngine.resultToString)
-        .toHaveBeenCalledWith(`{ "a": "b" }`, 'application/sparql-results+json');
+  describe('with a session', () => {
+    beforeEach(async () => {
+      queryEngine = new QueryEngineComunicaSolid({
+        sources: { type: 'rdfjsSource', value: null },
+        session: 'SESSION',
+      });
+      sparqlAlgebra = translate('SELECT * WHERE { ?x ?y ?z }');
+    });
+
+    describe('query', () => {
+      it('should return a JSON object', async () => {
+        expect(await queryEngine.query(sparqlAlgebra)).toEqual({ a: 'b' });
+        expect(comunicaEngine.query)
+          .toHaveBeenCalledWith(sparqlAlgebra, {
+            sources: { type: 'rdfjsSource', value: null },
+            session: 'SESSION',
+            '@comunica/actor-http-inrupt-solid-client-authn:session': 'SESSION',
+          });
+        expect(comunicaEngine.resultToString)
+          .toHaveBeenCalledWith(`{ "a": "b" }`, 'application/sparql-results+json');
+      });
     });
   });
 });

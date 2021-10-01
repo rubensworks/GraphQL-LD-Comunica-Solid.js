@@ -14,14 +14,6 @@
   ],
   "main": "index.js",
   "typings": "index",
-  "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid",
-  "lsd:contexts": {
-    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid/^2.0.0/components/context.jsonld": "components/context.jsonld"
-  },
-  "lsd:importPaths": {
-    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid/^2.0.0/components/": "components/",
-    "https://linkedsoftwaredependencies.org/bundles/npm/graphql-ld-comunica-solid/^2.0.0/config/": "config/"
-  },
   "repository": "git@github.com:rubensworks/graphql-ld-comunica-solid.js.git",
   "author": "Ruben Taelman <rubensworks@gmail.com>",
   "bugs": {
@@ -43,11 +35,7 @@
     "test"
   ],
   "devDependencies": {
-    "@types/graphql": "^14.0.0",
     "@types/jest": "^26.0.0",
-    "@types/minimist": "^1.2.0",
-    "@types/n3": "^1.1.4",
-    "coveralls": "^3.0.0",
     "jest": "^26.0.0",
     "manual-git-changelog": "^1.0.1",
     "pre-commit": "^1.2.2",
@@ -55,7 +43,7 @@
     "ts-jest": "^26.0.0",
     "tslint": "^6.0.0",
     "tslint-eslint-rules": "^5.3.1",
-    "typescript": "^3.3.1"
+    "typescript": "^4.4.3"
   },
   "jest": {
     "globals": {
@@ -80,17 +68,18 @@
   "scripts": {
     "test": "jest ${1}",
     "test-watch": "jest ${1} --watch",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "tslint index.ts lib/**/*.ts test/**/*.ts --exclude '**/*.d.ts'",
     "build": "tsc",
     "validate": "npm ls",
-    "prepare": "npm run build && mkdirp lib && comunica-compile-config config/config-default.json > lib/comunica-engine.js",
+    "prepare": "npm run build",
     "version": "manual-git-changelog onversion"
   },
   "dependencies": {
-    "@comunica/actor-init-sparql": "^1.10.0",
-    "@comunica/actor-http-solid-auth-fetch": "^1.0.0",
-    "graphql-ld": "^1.0.0",
-    "sparqlalgebrajs": "^2.2.0"
+    "@comunica/actor-init-sparql-solid": "^1.0.0",
+    "graphql-ld": "^1.4.0",
+    "sparqlalgebrajs": "^3.0.3"
+  },
+  "resolutions": {
+    "@types/yargs": "17.0.3"
   }
 }

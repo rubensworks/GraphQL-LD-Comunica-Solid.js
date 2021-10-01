@@ -9,7 +9,8 @@ using the [Comunica](https://github.com/comunica/comunica) query engine
 with [Solid](https://solid.mit.edu/) authentication.
 
 This tool is identical to [graphql-ld-comunica](https://github.com/rubensworks/GraphQL-LD-Comunica-Solid.js),
-with the additional feature that HTTP requests are authenticated using [solid-auth-client](https://github.com/solid/solid-auth-client/).
+with the additional feature that HTTP requests are authenticated
+using [Comunica SPARQL Solid](https://github.com/comunica/comunica-feature-solid/tree/master/packages/actor-init-sparql-solid).
 
 ## Usage
 
@@ -18,6 +19,7 @@ _This requires you to install [graphql-ld-comunica-solid](https://github.com/rub
 ```javascript
 import {Client} from "graphql-ld";
 import {QueryEngineComunicaSolid} from "graphql-ld-comunica-solid";
+import {interactiveLogin} from "solid-node-interactive-auth";
 
 // Define a JSON-LD context
 const context = {
@@ -32,12 +34,15 @@ const context = {
   }
 };
 
-// Create a GraphQL-LD client based on a client-side Comunica engine over 3 sources
+// Create a GraphQL-LD client based on a client-side Comunica engine over 2 sources
 const comunicaConfig = {
   sources: [
     "https://www.rubensworks.net/",
     "http://fragments.dbpedia.org/2016-04/en",
   ],
+  // This will open your Web browser to log in.
+  // Other mechanisms to obtain your session may also be used instead.
+  session: await interactiveLogin({ oidcIssuer: 'https://solidcommunity.net/' }),
 };
 const client = new Client({ context, queryEngine: new QueryEngineComunicaSolid(comunicaConfig) });
 
