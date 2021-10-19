@@ -80,6 +80,6 @@
     "sparqlalgebrajs": "^3.0.3"
   },
   "resolutions": {
-    "@types/yargs": "17.0.3"
+    "@types/yargs": "17.0.4"
   }
 }
