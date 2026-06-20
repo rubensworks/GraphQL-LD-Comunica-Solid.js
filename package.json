@@ -84,7 +84,7 @@
   "dependencies": {
     "@comunica/actor-init-sparql-solid": "^1.0.0",
     "graphql-ld": "^1.4.0",
-    "sparqlalgebrajs": "^3.0.3"
+    "sparqlalgebrajs": "^4.0.0"
   },
   "resolutions": {
     "@types/yargs": "17.0.4"
