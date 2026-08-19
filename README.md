@@ -10,7 +10,7 @@ with [Solid](https://solid.mit.edu/) authentication.
 
 This tool is identical to [graphql-ld-comunica](https://github.com/rubensworks/GraphQL-LD-Comunica-Solid.js),
 with the additional feature that HTTP requests are authenticated
-using [Comunica SPARQL Solid](https://github.com/comunica/comunica-feature-solid/tree/master/packages/actor-init-sparql-solid).
+using [Comunica SPARQL Solid](https://github.com/comunica/comunica-feature-solid/tree/master/engines/query-sparql-solid).
 
 ## Usage
 

@@ -83,9 +83,10 @@
     "version": "manual-git-changelog onversion"
   },
   "dependencies": {
-    "@comunica/actor-init-sparql-solid": "^1.0.0",
+    "@comunica/query-sparql-solid": "^5.0.0",
     "graphql-ld": "^2.0.0",
-    "sparqlalgebrajs": "^5.0.0"
+    "sparqlalgebrajs": "^5.0.0",
+    "stream-to-string": "^1.2.1"
   },
   "resolutions": {
     "@types/yargs": "17.0.35"

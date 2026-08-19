@@ -2,7 +2,7 @@ const comunicaEngine = {
   query: jest.fn((query, context) => Promise.resolve(`{ "a": "b" }`)),
   resultToString: jest.fn((data) => Promise.resolve({ data: streamifyString(data) })),
 };
-jest.mock('@comunica/actor-init-sparql-solid', () => ({ newEngine: () => comunicaEngine }));
+jest.mock('@comunica/query-sparql-solid', () => ({ QueryEngine: jest.fn(() => comunicaEngine) }));
 
 import {IQueryEngine} from "graphql-ld";
 import {Algebra} from "sparqlalgebrajs";
