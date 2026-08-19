@@ -42,24 +42,25 @@
     "test"
   ],
   "devDependencies": {
-    "@types/jest": "^26.0.0",
-    "jest": "^26.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.0.0",
+    "jest": "^30.0.0",
     "manual-git-changelog": "^1.0.1",
     "pre-commit": "^2.0.0",
     "streamify-string": "^1.0.1",
-    "ts-jest": "^26.0.0",
+    "ts-jest": "^29.0.0",
     "tslint": "^6.0.0",
     "tslint-eslint-rules": "^5.3.1",
-    "typescript": "^4.4.3"
+    "typescript": "^5.9.3"
   },
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsConfig": "test/tsconfig.json"
-      }
-    },
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.ts$": [
+        "ts-jest",
+        {
+          "tsconfig": "test/tsconfig.json"
+        }
+      ]
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
